@@ -1,12 +1,15 @@
 import React from 'react';
+import {useSelector} from "react-redux";  
+import {selectTask} from "../taskSlice"
 import styles from "./TaskList.module.scss";
-import sampleDate from './sampleDate.json';
+
 import TaskItem from '../taskItem/TaskItem';
 
 const TaskList:React.FC = () => {
+  const tasks=useSelector(selectTask);
   return (
     <div className={styles.root}>
-      {sampleDate.map((task)=>(
+      {tasks.map((task)=>(
         <TaskItem key={task.id} task={task}/>
      ))}
     </div>
